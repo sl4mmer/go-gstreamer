@@ -26,7 +26,7 @@ func ParseLaunch(pipelineStr string) (p *Pipeline, err error) {
 	gstElt := C.gst_parse_launch(pDesc, &gError)
 
 	if gError != nil {
-		err = errors.New("create pipeline error")
+		err = errors.New("create pipeline error %s" + C.GoString(gError.message))
 		return
 	}
 
